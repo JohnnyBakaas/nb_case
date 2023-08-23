@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.lable {
+  margin-bottom: 5px;
+}
+
+.input {
+  padding: 14px;
+  width: 100%;
+}
+
+.prefix {
+  padding: 14px;
+  margin-right: 10px;
+  width: 60px;
+  text-align: center;
+}

@@ -1,0 +1,8 @@
+.label {
+  margin-bottom: 5px;
+}
+
+.date {
+  border: 1px solid var(--font-color);
+  border-radius: 2px;
+}

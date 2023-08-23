@@ -1,0 +1,9 @@
+.darkMode {
+  --font-color: rgb(238, 238, 238);
+  --background-color: rgb(15, 15, 15);
+}
+
+.lightMode {
+  --font-color: rgb(15, 15, 15);
+  --background-color: rgb(238, 238, 238);
+}
