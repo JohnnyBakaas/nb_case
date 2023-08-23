@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./Form.module.css";
 import AgeInput from "../ageInput/AgeInput";
 import DateInput from "../dateInput/DateInput";
@@ -17,7 +17,7 @@ const Form = () => {
   const [cuntryCode, setCuntryCode] = useState(0);
 
   const subnit = () => {
-    if (!validateAllData()) return;
+    if (!validateAllReqData()) return;
     const message = {
       applicant: "Johnny Bakaas",
       email: email,
@@ -25,6 +25,24 @@ const Form = () => {
       phone: "+4790761610",
     };
     console.log(message);
+
+    const url = "https://case.nettbureau.no/submit";
+    const data = JSON.stringify(message);
+    console.log(data);
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: data,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   const fullNameConstructor = () => {
@@ -34,15 +52,27 @@ const Form = () => {
     return outP;
   };
 
-  const validateAllData = () => {
-    return false;
-    if (validateName(firstName)) return false;
-    if (validateName(lastName)) return false;
+  const validateAllReqData = () => {
+    if (!validateName(firstName)) return false;
+    if (middleName !== "") if (!validateName(middleName)) return false;
+    if (!validateName(lastName)) return false;
+    if (!validateEmail(email)) return false;
+    if (!validatePhoneNr(cuntryCode, tlf)) return false;
+    return true;
   };
 
   const validateName = (name: string) => {
     const norgesLengsteNavn = 69;
     if (name.length >= norgesLengsteNavn) return false;
+
+    let fault = false;
+    name.split(" ").map((e) => {
+      if (!/[A-ZÆØÅ]/.test(e[0])) {
+        fault = true;
+      }
+    });
+    if (fault) return false;
+
     const regex = /^[a-zA-ZæøåÆØÅ]+(\-|\s?[a-zA-ZæøåÆØÅ]+)+?$/;
     return name.match(regex);
   };
@@ -81,7 +111,10 @@ const Form = () => {
         setName={setFirstName}
       />
       {validateName(firstName) ? null : (
-        <p>Navn kan ikke inneholde tall og spesialkarakterer</p>
+        <div>
+          <p>Navn kan ikke inneholde tall og spesialkarakterer</p>
+          <p>Navn må starte ned stor bokstav</p>
+        </div>
       )}
 
       <SingleStringInput
@@ -92,7 +125,10 @@ const Form = () => {
         setName={setMiddleName}
       />
       {middleName == "" ? null : validateName(middleName) ? null : (
-        <p>Navn kan ikke inneholde tall og spesialkarakterer</p>
+        <div>
+          <p>Navn kan ikke inneholde tall og spesialkarakterer</p>
+          <p>Navn må starte ned stor bokstav</p>
+        </div>
       )}
 
       <SingleStringInput
@@ -102,7 +138,10 @@ const Form = () => {
         setName={setLastName}
       />
       {validateName(lastName) ? null : (
-        <p>Navn kan ikke inneholde tall og spesialkarakterer</p>
+        <div>
+          <p>Navn kan ikke inneholde tall og spesialkarakterer</p>
+          <p>Navn må starte ned stor bokstav</p>
+        </div>
       )}
 
       <AgeInput val={age} setVal={setAge} optional />
