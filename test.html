@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    div {
+      font-family: sans-serif;
+    }
+    .styled-table {
+      font-size: 0.9em;
+      border-collapse: collapse;
+      margin: 25px 0;
+      width: 400px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+    .styled-table thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: left;
+    }
+    .styled-table tbody tr td {
+      max-width: 50px;
+    }
+
+    .styled-table th,
+    .styled-table td {
+      padding: 12px 15px;
+    }
+
+    .styled-table tbody tr {
+      border-bottom: 1px solid #dddddd;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+
+    .styled-table tbody tr:last-of-type {
+      border-bottom: 2px solid #009879;
+    }
+
+    .styled-table tbody tr:hover {
+      font-weight: bold;
+      color: #009879;
+    }
+  </style>
+
+  <body>
+    <div>
+      <h1>Svar på undrsøkelse</h1>
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Felt</th>
+            <th>Svar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Applicant</td>
+            <td>6000</td>
+          </tr>
+
+          <tr>
+            <td>Email</td>
+            <td>5150</td>
+          </tr>
+
+          <tr>
+            <td>Name</td>
+            <td>6000</td>
+          </tr>
+
+          <tr>
+            <td>Phone</td>
+            <td>5150</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

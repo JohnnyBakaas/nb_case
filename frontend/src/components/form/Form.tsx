@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Form.module.css";
 import AgeInput from "../ageInput/AgeInput";
 import DateInput from "../dateInput/DateInput";
@@ -15,9 +15,16 @@ const Form = () => {
   const [email, setEmail] = useState("");
   const [tlf, setTlf] = useState(0);
   const [cuntryCode, setCuntryCode] = useState(0);
+  const [notAlowedToContinue, setNotAlowedToContinue] = useState(false);
+
+  useEffect(() => {
+    if (!validateAllReqData()) return setNotAlowedToContinue(true);
+    setNotAlowedToContinue(false);
+  }, [firstName, lastName, email, tlf, cuntryCode]);
 
   const subnit = () => {
-    if (!validateAllReqData()) return;
+    console.log("kake");
+    return;
     const message = {
       applicant: "Johnny Bakaas",
       email: email,
@@ -174,6 +181,7 @@ const Form = () => {
 
       <button
         className={styles.button}
+        style={notAlowedToContinue ? { backgroundColor: "red" } : {}}
         onClick={() => {
           subnit();
         }}
