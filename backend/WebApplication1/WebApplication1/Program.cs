@@ -1,5 +1,4 @@
-
-using WebApplication1.Contracts;
+using WebApplication1.Contracts.ContactForm.v1;
 using WebApplication1.Controllers.FormHandeler.v1;
 
 namespace WebApplication1
@@ -26,7 +25,7 @@ namespace WebApplication1
             }
 
             // Add services to the container.
-            builder.Services.AddSingleton<IFormHandeler, FormHandeler>();
+            builder.Services.AddSingleton<IContactForm, ContactForm>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

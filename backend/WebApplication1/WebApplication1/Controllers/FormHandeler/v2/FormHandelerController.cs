@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Contracts;
+using WebApplication1.Contracts.ContactForm.v1;
 
 namespace WebApplication1.Controllers.FormHandeler.v2
 {
@@ -7,9 +7,9 @@ namespace WebApplication1.Controllers.FormHandeler.v2
     [ApiController]
     public class FormHandelerController : ControllerBase
     {
-        private readonly IFormHandeler _formHandeler;
+        private readonly IContactForm _formHandeler;
 
-        public FormHandelerController(IFormHandeler formHandeler)
+        public FormHandelerController(IContactForm formHandeler)
         {
             _formHandeler = formHandeler;
         }

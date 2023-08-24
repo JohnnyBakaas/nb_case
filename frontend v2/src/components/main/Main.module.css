@@ -1,0 +1,44 @@
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main video {
+  width: 100%;
+  height: calc(100% - 200px);
+  object-fit: cover;
+  position: absolute;
+}
+
+.main:before {
+  content: "";
+  position: absolute;
+  height: calc(100% - 200px);
+  width: 100%;
+  background: rgba(0, 0, 0, 0.615);
+  z-index: 1;
+}
+.content {
+  width: var(--content-width);
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+  height: calc(100vh - 200px);
+}
+
+.content div {
+  margin-top: 90px;
+  background-color: var(--glass);
+  width: 500px;
+  padding: 30px;
+  position: relative;
+  border: 3px solid var(--border-color);
+  border-radius: 30px;
+  height: fit-content;
+}
+
+.content div p {
+  margin-top: 20px;
+}

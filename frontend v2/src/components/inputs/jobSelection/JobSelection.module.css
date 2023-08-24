@@ -1,0 +1,9 @@
+.table input {
+  background-color: var(--glass);
+  font-size: 1em;
+}
+
+.table label {
+  font-size: 1em;
+  user-select: none;
+}
