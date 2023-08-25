@@ -1,0 +1,20 @@
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.section label {
+  margin-top: 20px;
+}
+
+.tlf {
+  display: flex;
+  width: 100%;
+}
+.tlf input {
+  width: 100%;
+}
+.tlf input:first-child {
+  width: 70px;
+  text-align: center;
+}

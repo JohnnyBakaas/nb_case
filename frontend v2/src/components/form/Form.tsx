@@ -1,24 +1,92 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import styles from "./Form.module.css";
-import Page1 from "./pages/Page1";
+import Step1 from "./steps/Step1";
+import Step2 from "./steps/Step2";
+import Step3 from "./steps/Step3";
 
 const jobSelectionOptions = [
   "Snekker",
   "Rørlegger",
   "elekTrikker",
-  "bil makaniker",
+  "bilmekaniker",
 ];
 
 const Form = () => {
+  const [step, setStep] = useState(0);
+  const [nextAvailable, setNextAvailable] = useState(0);
   const [job, setJob] = useState("");
-  const handleSubmit = () => {};
+  const [date, setDate] = useState(new Date());
+
+  const [aboutTheJob, setAboutTheJob] = useState("");
+
+  const [firstName, setFirstName] = useState("");
+  const [midleName, setMidleName] = useState("");
+  const [lastName, setLastName] = useState("");
+
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState<number[]>([47, 0]);
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
+  const steps = [
+    <Step1
+      job={job}
+      setJob={setJob}
+      jobSelectionOptions={jobSelectionOptions}
+      date={date}
+      setDate={setDate}
+      setNextAvailable={setNextAvailable}
+    />,
+    <Step2
+      aboutTheJob={aboutTheJob}
+      setAboutTheJob={setAboutTheJob}
+      setNextAvailable={setNextAvailable}
+    />,
+    <Step3
+      firstName={firstName}
+      setFirstName={setFirstName}
+      midleName={midleName}
+      setMidleName={setMidleName}
+      lastName={lastName}
+      setLastName={setLastName}
+      email={email}
+      setEmail={setEmail}
+      phoneNumber={phoneNumber}
+      setPhoneNumber={setPhoneNumber}
+      setNextAvailable={setNextAvailable}
+    />,
+    ,
+  ];
+
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <Page1
-        job={job}
-        setJob={setJob}
-        jobSelectionOptions={jobSelectionOptions}
-      />
+      <section>{steps[step]}</section>
+
+      <section className={styles.buttonWrapper}>
+        {step !== 0 && (
+          <button
+            onClick={() => {
+              setStep((prev) => prev - 1);
+            }}
+          >
+            Forige
+          </button>
+        )}
+        {step === steps.length - 2 ? (
+          <button disabled={!(nextAvailable === step + 1)}>Send</button>
+        ) : (
+          <button
+            onClick={() => {
+              setStep((prev) => prev + 1);
+            }}
+            disabled={!(nextAvailable === step + 1)}
+          >
+            Neste
+          </button>
+        )}
+      </section>
     </form>
   );
 };

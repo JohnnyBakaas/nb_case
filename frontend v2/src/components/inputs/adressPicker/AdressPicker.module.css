@@ -1,0 +1,23 @@
+.power .wrapper {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 0px;
+  border-width: 0px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.power .wrapper div {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 0px;
+  border-width: 0px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.power .wrapper div input {
+  width: auto;
+  padding: 0;
+  width: 100%;
+}

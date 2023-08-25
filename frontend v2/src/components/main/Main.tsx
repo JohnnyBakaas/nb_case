@@ -10,7 +10,7 @@ const Main = () => {
       </video>
       <div className={styles.content}>
         <div>
-          <h2>Noen ting er det best og etterlate til proffene</h2>
+          <h2>Noen ting er det best å etterlate til proffene</h2>
 
           <p>
             Trenger du hjelp til oppgaver som krever ekspertise og

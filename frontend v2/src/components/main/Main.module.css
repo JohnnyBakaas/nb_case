@@ -7,7 +7,7 @@
 
 .main video {
   width: 100%;
-  height: calc(100% - 200px);
+  height: calc(100vh - 100px);
   object-fit: cover;
   position: absolute;
 }
@@ -15,9 +15,9 @@
 .main:before {
   content: "";
   position: absolute;
-  height: calc(100% - 200px);
+  height: calc(100vh - 100px);
   width: 100%;
-  background: rgba(0, 0, 0, 0.615);
+  background: rgba(46, 46, 46, 0.937);
   z-index: 1;
 }
 .content {
@@ -25,7 +25,7 @@
   display: flex;
   justify-content: space-between;
   z-index: 2;
-  height: calc(100vh - 200px);
+  height: calc(100vh - 100px);
 }
 
 .content div {
