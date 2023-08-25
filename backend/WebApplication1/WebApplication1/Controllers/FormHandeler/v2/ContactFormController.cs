@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Contracts.ContactForm.v1;
-using WebApplication1.Controllers.FormHandeler.v1.Model;
+using WebApplication1.Contracts.ContactForm.v2;
+using WebApplication1.Controllers.FormHandeler.v2.Model;
 
-namespace WebApplication1.Controllers.FormHandeler.v1
+namespace WebApplication1.Controllers.FormHandeler.v2
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/v2/[controller]")]
     [ApiController]
     public class ContactFormController : ControllerBase
     {
@@ -15,9 +15,11 @@ namespace WebApplication1.Controllers.FormHandeler.v1
             _formHandeler = formHandeler;
         }
 
+
         [HttpPost("Submit")]
         public IActionResult Submit([FromBody] FormData data)
         {
+
             var res = (FormDataResponse)_formHandeler.SubmitForm(data);
 
             if (res.Errors.Any())
@@ -25,7 +27,10 @@ namespace WebApplication1.Controllers.FormHandeler.v1
                 return BadRequest(res);
             }
 
+            Console.WriteLine("Vi magler send greia");
+
             return Ok(res);
         }
+
     }
 }

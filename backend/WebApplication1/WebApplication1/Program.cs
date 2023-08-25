@@ -1,6 +1,3 @@
-using WebApplication1.Contracts.ContactForm.v1;
-using WebApplication1.Controllers.FormHandeler.v1;
-
 namespace WebApplication1
 {
     public class Program
@@ -25,12 +22,19 @@ namespace WebApplication1
             }
 
             // Add services to the container.
-            builder.Services.AddSingleton<IContactForm, ContactForm>();
+
+            builder.Services.AddSingleton<Contracts.ContactForm.v1.IContactForm, Controllers.FormHandeler.v1.ContactForm>();
+            builder.Services.AddSingleton<Contracts.ContactForm.v2.IContactForm, Controllers.FormHandeler.v2.ContactForm>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.CustomSchemaIds(type => type.FullName);
+            });
+
 
             var app = builder.Build();
 

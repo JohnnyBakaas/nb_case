@@ -175,9 +175,8 @@ namespace WebApplication1.Controllers.FormHandeler.v1
         {
             try
             {
-
-                var userName = "post.test.noe@gmail.com";
-                var password = "fddcfmqxnhsqjzrx";
+                var userName = "post.test.noe@gmail.com"; //Nei, jeg hadde ikke gjort dette med NOE annet enn en brenner bruker
+                var password = "fddcfmqxnhsqjzrx"; //Nei, jeg hadde ikke gjort dette med NOE annet enn en brenner bruker
                 var recipient = "io@nettbureau.no";
                 recipient = "johnny.bakaas@gmail.com";
                 var smtpClient = new SmtpClient("smtp.gmail.com")

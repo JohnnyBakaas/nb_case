@@ -3,6 +3,7 @@ import styles from "./Form.module.css";
 import Step1 from "./steps/Step1";
 import Step2 from "./steps/Step2";
 import Step3 from "./steps/Step3";
+import usePostRequest from "../../hooks/usePostRequest";
 
 const jobSelectionOptions = [
   "Snekker",
@@ -26,8 +27,33 @@ const Form = () => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState<number[]>([47, 0]);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [response, setResponse] = useState("");
+
+  const { sendPostRequest, loading, error } = usePostRequest();
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const formData = {
+      applicant: "Johnny Bakaas",
+      job,
+      date,
+      aboutTheJob,
+      firstName,
+      midleName,
+      lastName,
+      email,
+      phoneNumberPrefix: phoneNumber[0],
+      phoneNumber: phoneNumber[1],
+    };
+
+    const result = await sendPostRequest(
+      "https://localhost:7223/api/v2/ContactForm/Submit",
+      formData
+    );
+    if (result) {
+      console.log("Data sent successfully!");
+      setResponse("ja");
+    }
   };
 
   const steps = [
@@ -59,6 +85,8 @@ const Form = () => {
     />,
     ,
   ];
+
+  if (response !== "") return <h1>Det Fungerer</h1>;
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>

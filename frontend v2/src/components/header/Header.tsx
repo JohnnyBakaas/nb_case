@@ -9,13 +9,13 @@ const Header = ({ setLightMode }: HeaderProps) => {
     <header className={styles.header}>
       <div>
         <h1>ProffSentralen</h1>
-        <p
+        <button
           onClick={() => {
             setLightMode((e: any) => !e); // Endre dette så det ikke er any
           }}
         >
-          kake
-        </p>
+          Light/Dark mode
+        </button>
       </div>
     </header>
   );
