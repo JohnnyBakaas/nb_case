@@ -12,7 +12,7 @@ namespace WebApplication1.Controllers.FormHandeler.v1
 
         public IFormDataResponse SubmitForm(IFormData data)
         {
-            string faultsInName = FaultInName(data.Name);
+            string faultsInName = FaultInName(System.Net.WebUtility.HtmlEncode(data.Name));
             string faultInEmail = FaultInEmail(data.Email);
             string faultInPhone = FaultInPhone(data.Phone);
             string faultInApplicant = FaultInApplicant(data.Applicant);
@@ -185,8 +185,6 @@ namespace WebApplication1.Controllers.FormHandeler.v1
                     Credentials = new NetworkCredential(userName, password),
                     EnableSsl = true,
                 };
-
-                //smtpClient.Send(, , "subject", "body");
 
                 var mailMessage = new MailMessage
                 {

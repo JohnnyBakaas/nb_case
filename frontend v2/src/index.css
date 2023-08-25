@@ -49,6 +49,12 @@ button {
 }
 
 .missing-information {
+  margin-top: 5px;
   font-size: 0.7em;
   color: red;
+}
+
+input {
+  padding: 10px;
+  border-radius: 10px;
 }

@@ -33,6 +33,7 @@ const Form = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (step != steps.length - 2) return;
     const formData = {
       applicant: "Johnny Bakaas",
       job,
@@ -99,7 +100,7 @@ const Form = () => {
     return (
       <div>
         <h1>fancy loading greie</h1>
-        <p>Klokka er 21:26</p>
+        <p>Klokka er sent på fredag</p>
         <p>Jeg har ikke tid til å gjøre noe fancy greier</p>
       </div>
     );

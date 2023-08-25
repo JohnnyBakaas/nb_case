@@ -15,18 +15,3 @@
     }
 }
 
-/*
-{
-    "job": "bilmekaniker",
-    "date": "2023-08-25T17:26:16.275Z",
-    "aboutTheJob": "asdf",
-    "firstName": "Johnny",
-    "midleName": "",
-    "lastName": "Bakaas",
-    "email": "johnny@bakaas-cadconsult.no",
-    "phoneNumber": [
-        47,
-        90732947
-    ]
-}
- */

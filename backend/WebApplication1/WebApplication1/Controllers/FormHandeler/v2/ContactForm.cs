@@ -15,7 +15,6 @@ namespace WebApplication1.Controllers.FormHandeler.v2
              * whiteliste prefixes for forskjellige land
              * begrense antall ganger det samme tlf nummeret kan sende på nytt per tids enhet
              * bedre validering av tlf nr
-             * 
              */
 
             var errors = new List<string>();
@@ -45,14 +44,14 @@ namespace WebApplication1.Controllers.FormHandeler.v2
 
             var correctedData = new FormData()
             {
-                FirstName = firstName,
-                MidleName = midleName,
-                LastName = lastName,
-                Applicant = data.Applicant,
-                Job = data.Job,
+                FirstName = System.Net.WebUtility.HtmlEncode(firstName),
+                MidleName = System.Net.WebUtility.HtmlEncode(midleName),
+                LastName = System.Net.WebUtility.HtmlEncode(lastName),
+                Applicant = System.Net.WebUtility.HtmlEncode(data.Applicant),
+                Job = System.Net.WebUtility.HtmlEncode(data.Job),
                 Date = data.Date,
-                AboutTheJob = data.AboutTheJob,
-                Email = data.Email,
+                AboutTheJob = System.Net.WebUtility.HtmlEncode(data.AboutTheJob),
+                Email = System.Net.WebUtility.HtmlEncode(data.Email),
                 PhoneNumberPrefix = data.PhoneNumberPrefix,
                 PhoneNumber = data.PhoneNumber,
             };
@@ -64,14 +63,13 @@ namespace WebApplication1.Controllers.FormHandeler.v2
 
         private string CorrectNameFormats(string name)
         {
-            if (name.Length == 0) return string.Empty;
+            if (string.IsNullOrEmpty(name)) return string.Empty;
             var correctedName = string.Empty;
             var names = name.Split(' ');
 
             for (int i = 0; i < names.Length; i++)
             {
-                name = names[i];
-                name.ToLower();
+                name = names[i].ToLower();
 
                 correctedName += name[0].ToString().ToUpper();
                 correctedName += name.Substring(1);
@@ -82,8 +80,9 @@ namespace WebApplication1.Controllers.FormHandeler.v2
                 }
             }
 
-            return correctedName;
+            return correctedName.Trim();
         }
+
 
         private string FaultInEmail(string email)
         {
