@@ -27,7 +27,7 @@ const Form = () => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState<number[]>([47, 0]);
 
-  const [response, setResponse] = useState("");
+  const [formStatus, setFormStatus] = useState("");
 
   const { sendPostRequest, loading, error } = usePostRequest();
 
@@ -52,7 +52,7 @@ const Form = () => {
     );
     if (result) {
       console.log("Data sent successfully!");
-      setResponse("ja");
+      setFormStatus("sucsess");
     }
   };
 
@@ -86,7 +86,32 @@ const Form = () => {
     ,
   ];
 
-  if (response !== "") return <h1>Det Fungerer</h1>;
+  if (error) {
+    return (
+      <div>
+        <h1>Noe har gått galt!</h1>
+        {error.message}
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div>
+        <h1>fancy loading greie</h1>
+        <p>Klokka er 21:26</p>
+        <p>Jeg har ikke tid til å gjøre noe fancy greier</p>
+      </div>
+    );
+  }
+
+  if (formStatus === "sucsess")
+    return (
+      <div>
+        <h1>Takk!</h1>
+        <p>Du kan forvente svar innen 14-32 arbeidsdager</p>
+      </div>
+    );
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
