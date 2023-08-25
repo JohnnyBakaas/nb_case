@@ -12,7 +12,7 @@ namespace WebApplication1.Controllers.FormHandeler.v1
 
         public IFormDataResponse SubmitForm(IFormData data)
         {
-            string faultsInName = FaultInName(System.Net.WebUtility.HtmlEncode(data.Name));
+            string faultsInName = FaultInName(data.Name);
             string faultInEmail = FaultInEmail(data.Email);
             string faultInPhone = FaultInPhone(data.Phone);
             string faultInApplicant = FaultInApplicant(data.Applicant);
