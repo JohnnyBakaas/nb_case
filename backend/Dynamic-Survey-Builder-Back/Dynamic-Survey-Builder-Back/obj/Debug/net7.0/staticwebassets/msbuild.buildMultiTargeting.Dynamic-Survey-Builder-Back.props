@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Dynamic-Survey-Builder-Back.props" />
+</Project>
